@@ -222,3 +222,9 @@ border: 1px solid var(--color-primary);
 	justify-content: center;
 }
 
+@media (max-width: 760px){
+	.quiz-box{
+		width: 90%;
+		margin: 0 auto;
+	}
+}
