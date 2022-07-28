@@ -80,21 +80,19 @@ h1,.questions{
 	transition: all 0.5s;
 }
 
-.btn1:hover, 
-.btn2:hover,
- .btn3:hover,
- .btn4:hover{
+
+ .hover:hover{
 	color: white;
 	background: var(--submit);
 }
 
-.btn1:active,
+/* .btn1:active,
 .btn2:active,
 .btn3:active,
 .btn4:active{
 	color: white;
 	background: var(--color-secondary);
-}
+} */
 
 .navigate{
 	display: flex;
@@ -117,6 +115,13 @@ h1,.questions{
 .green{
 	background: green;
 }
+
+.fa-solid{
+	width: 50px;
+	background: rgb(155, 132, 132);
+	color: white;
+}
+
  
 .btn:hover{
   transform: translate(2px,0);
@@ -176,7 +181,7 @@ h1,.questions{
   font-weight: bold;
   transition: all ease-in 0.2s;
   padding-top: 1em;
-  background: var(--color-primary)
+  background: var(--color-primary);
   color: white;
 }
 
@@ -202,11 +207,26 @@ background: var(--color-primary);
 
 }
 
-.quiz-restart:hover{
-background: white;
-color: var(--color-primary);
-border: 1px solid var(--color-primary);
+.bg{
+	width: 50px;
+	height: 50px;
 }
+
+.red{
+	background-color: red;
+	color: white;
+}
+.green{
+	background-color: green;
+	color: white;
+}
+
+
+.quiz-restart > a:hover{
+	background-color: white;
+	color: var(--color-primary);
+	border: 1px solid var(--color-primary);
+	}
 
 
 .horizontal-line{

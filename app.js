@@ -3,21 +3,13 @@ class Quiz{
 		this.questions =  questions;
 		this.index = 0;
 		this.scoreCount = 0;
+		this.pass = false
 
 	}
     
    getQuestionNumber(){
    	return this.questions[this.index];
    }
-
-   guess(answer){
-   	 if(this.getQuestionNumber().isCorrect(answer))
-   	 {
-   	 	this.scoreCount++; 
-   	 }
-   	 this.index++;
-   }
-   
 	
 	quizEnd(){
 		return this.index === this.questions.length
@@ -36,7 +28,6 @@ class Quizquestions{
 
 	isCorrect(guess) {
 		return this.answer === guess;
-		console.log(guess)
 	}
 }
 
@@ -52,8 +43,8 @@ function showProgress() {
 function outputScore(){
 	let quizEndHTML = 
    	`
-   	    <h1 class="end-quiz"> CONGRATULATIONS! You completed the Quiz </h1>
-   	    <div class="flex"><img src="thumbsUp.jpg" class="img"></div>
+   	    ${quiz.scoreCount >= 3 ? `<h1 class="end-quiz"> CONGRATULATIONS! You completed the Quiz </h1>` : `<h1 class="end-quiz"> NICE TRY! You can do better</h1>`}
+   	    ${quiz.scoreCount >= 3 ? `<div class="flex"><img class="feedback" src="images/goodjob.png" alt="good job"></div>` : `<div class="flex"><img class="feedback" src="images/hmm.png" alt="nice try"></div>`}
    	    <h2 id = "score" class="score"> Your score:  ${quiz.scoreCount} / ${quiz.questions.length} </h2>
    	    <button class ="quiz-restart flex">
    	         <a href = "index.html"> Take Quiz Again </a>
@@ -67,8 +58,27 @@ function guess (id, guess) {
 	let button = document.getElementById(id);
 
 	button.onclick = function() {
-		quiz.guess(guess);
-		displayQuestions();
+		if(quiz.getQuestionNumber().isCorrect(guess)){
+			button.classList.add("green")
+			button.classList.remove("hover")
+			setTimeout( () =>{
+				quiz.index++
+				button.classList.remove("green")
+				button.classList.add("hover")
+				quiz.scoreCount++
+				displayQuestions();
+			}, 1000)
+		}
+		else{
+			button.classList.add("red")
+			button.classList.remove("hover")
+			setTimeout( () =>{
+				quiz.index++
+				button.classList.remove("red")
+				button.classList.add("hover")
+				displayQuestions();
+			}, 1000)
+		};
 	}
 }
 
